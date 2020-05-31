@@ -12,6 +12,8 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
+type SugaredLogger = zap.SugaredLogger
+
 const (
 	DebugLevel  = "debug"
 	InfoLevel   = "info"
@@ -32,7 +34,7 @@ var levelStrToZapLevel = map[string]zapcore.Level{
 	FatalLevel:  zapcore.FatalLevel,
 }
 
-func NewLogger(dir string, name string, level string) (*zap.SugaredLogger, error) {
+func NewLogger(dir string, name string, level string) (*SugaredLogger, error) {
 	logLevel, ok := levelStrToZapLevel[strings.ToLower(level)]
 	if !ok {
 		return nil, fmt.Errorf("level invalid")
