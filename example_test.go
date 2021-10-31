@@ -1,19 +1,16 @@
 package logger
 
 import (
-	"fmt"
 	"os"
 	"testing"
+
+	logger "github.com/sirupsen/logrus"
 )
 
 // 2020/05/31 19:06 by fzls
 
 func TestMain(m *testing.M) {
-	logger, err := NewLogger("logs", "test", "debug")
-	if err != nil {
-		fmt.Printf("new logger err=%v\n", err)
-		return
-	}
+	InitLogger("logs", "test", "info", "debug")
 
 	logger.Debugf("Debugf %v", 1)
 	logger.Infof("Infof %v", 1)
