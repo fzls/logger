@@ -10,7 +10,7 @@ import (
 // 2020/05/31 19:06 by fzls
 
 func TestMain(m *testing.M) {
-	InitLogger("logs", "test", "info", "debug")
+	InitLogger("logs", "test", "info")
 
 	logger.Debugf("Debugf %v", 1)
 	logger.Infof("Infof %v", 1)

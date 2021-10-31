@@ -9,18 +9,18 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func InitLogger(dir string, name string, consoleLevel, fileLevel string) {
+func InitLogger(dir string, name string, level string) {
 	logrus.SetReportCaller(true)
 
 	// 设置写console
-	logrus.SetLevel(GetLogLevel(consoleLevel))
+	logrus.SetLevel(GetLogLevel(level))
 	logrus.SetOutput(colorable.NewColorableStdout())
 	logrus.SetFormatter(LogFormat{EnableColor: true})
 
 	// 设置写文件
 	logFilePath := getLoggerPath(dir, name)
 	fileFormatter := LogFormat{EnableColor: false}
-	fileHook := NewFileHook(logFilePath, fileFormatter, GetLogLevels(consoleLevel))
+	fileHook := NewFileHook(logFilePath, fileFormatter, GetLogLevels(level))
 	logrus.AddHook(fileHook)
 }
 
